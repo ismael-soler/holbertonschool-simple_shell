@@ -11,20 +11,30 @@ char **search_path(char *buffer, char *path)
 	int i, argument_count = 2;
 	char *aux = NULL;
 	struct stat st;
+	(void)argument_count;
 
 	array_dir = buff_to_array(path, ':');
-	if (buffer != NULL)
+	if (buffer[0] == '/')
+	{
+		array_arg = buff_to_array(buffer, ' ');
+		return (array_arg);
+	}
+	printf("post ramificacion");
+/*	if (buffer != NULL)
 		for (i = 0; buffer[i]; i++)
 			if (buffer[i] == ' ')
 				argument_count++;
+*/
 
 	array_arg = buff_to_array(buffer, ' ');
+	printf("%s", array_arg[0]);
 
 	for (i = 0; array_dir[i]; i++)
 	{
 		aux = strcpy(aux, array_dir[i]);
 		aux = strcat(aux, "/");
 		aux = strcat(aux, array_arg[0]);
+		printf("%s", aux);
 		if (stat(aux, &st) == 0)
 			break;
 	}
