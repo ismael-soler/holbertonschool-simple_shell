@@ -10,28 +10,42 @@
 
 int main(int ac, char **av, char **env)
 {
-	size_t buff_size = 0, buff_count = 0;
+	char **arguments = NULL;
+	size_t buff_size = 0;
+	ssize_t buff_count = 0;
 	char *buffer = NULL;
 	int child_pid, status;
 	(void)ac;
 	(void)av;
 	(void)env;
 
+	while (1)
+	{
+
 	printf("$ ");
 	buff_count = getline(&buffer, &buff_size, stdin);
-	strtok(buffer, "\n");
 	buff_count = strlen(buffer);
-
-	printf("%s with %li chars", buffer, buff_count);
+	if (buff_count == EOF) /*Control D*/
+		break;
+	buffer = strtok(buffer, "\n");
+	arguments = buff_to_array(buffer, 32);
+	child_pid = fork();
 	if (child_pid == -1)
 		perror("Error");
-	if (child_pid == 0)
+	else if (child_pid == 0)
 	{
-		if (execve)
+		if (execve(arguments[0], arguments, NULL) == -1)
+			perror("Error");
+		printf("Despues de execve\n");
 	}
 	else
-	{
 		wait(&status);
+
+
+	printf("total chars: %li\n", buff_count);
+
+	free(arguments);
 	}
+	free(buffer);
 	return (0);
 }

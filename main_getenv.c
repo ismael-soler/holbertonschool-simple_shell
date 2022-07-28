@@ -9,9 +9,8 @@
 int main()
 {
 	char *genv = NULL;
-	int i;
 
-	genv = _getenv("HOSTNAME");
+	genv = _getenv("PATH");
 	printf("%s", genv);
 	printf("\n");
 	return (0);
