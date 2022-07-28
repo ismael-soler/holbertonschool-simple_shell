@@ -9,7 +9,7 @@
 char *_getenv(const char *name)
 {
 	extern char **environ;
-	int i = 0, j = 0, c_len;
+	int i = 0, c_len;
 	char *var ;
 
 	c_len = strlen(name);
@@ -23,5 +23,7 @@ char *_getenv(const char *name)
 		if (strncmp(environ[i], name, c_len) == 0)
 			var = environ[i];
 	}
+	var = strtok(var, "=");
+	var = strtok(NULL, "=");
 	return (var);
 }
