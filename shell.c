@@ -36,7 +36,7 @@ int main(int ac, char **av, char **env)
 	{
 		if (buffer[0] != '/') /* When the user doesnt specify a programs path */
 			arguments = search_path(buffer, _getenv("PATH"));
-		else /* When the user does specify a programs path */
+		/* When the user does specify a programs path */
 			if (execve(arguments[0], arguments, NULL) == -1)
 				perror("Error");
 		printf("Despues de execve\n");

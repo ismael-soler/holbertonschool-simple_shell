@@ -29,5 +29,6 @@ char **search_path(char *buffer, char *path)
 			break;
 	}
 	array_arg[0] = strcpy(array_arg[0], aux);
+	printf("%s\n", array_arg[0]);
 	return (array_arg);
 }
