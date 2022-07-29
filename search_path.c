@@ -8,7 +8,7 @@
 char **search_path(char *buffer, char *path)
 {
 	char **array_dir = NULL, **array_arg = NULL;
-	int i, argument_count = 2, size_path = 0;
+	int i, size_path = 0;
 	char *aux;
 	struct stat st;
 
@@ -23,7 +23,7 @@ char **search_path(char *buffer, char *path)
 		printf("%s\n", array_arg[i]);
 	for (i = 0; array_dir; i++)
 	{
-		size_path = (strlen(array_dir[i]) + strlen(array_arg[0]) + 1);
+		size_path = (strlen(array_dir[i]) + strlen(array_arg[0]) + 2);
 		aux = malloc(sizeof(char) * size_path);
 		if (aux == NULL)
 			return (NULL);
@@ -32,7 +32,13 @@ char **search_path(char *buffer, char *path)
 		strcat(aux, array_arg[0]);
 		if (stat(aux, &st) == 0)
 			break;
+		if (stat(aux, &st) == '1')
+			perror("Error de stat:");
+		free (aux);
 	}
+	array_arg[0] = malloc(strlen(aux) * sizeof(char));
 	strcpy(array_arg[0], aux);
+	free(aux);
+
 	return (array_arg);
 }
