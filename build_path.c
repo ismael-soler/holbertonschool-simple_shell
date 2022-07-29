@@ -33,9 +33,11 @@ char **build_path(char *buffer)
 			perror("Error de stat:");
 		free(aux);
 	}
-	array_arg[0] = malloc(strlen(aux) * sizeof(char));
-	strcpy(array_arg[0], aux);
-	free(aux);
-
+	if (aux)
+	{
+		array_arg[0] = malloc(strlen(aux) * sizeof(char));
+		strcpy(array_arg[0], aux);
+		free(aux);
+	}
 	return (array_arg);
 }
