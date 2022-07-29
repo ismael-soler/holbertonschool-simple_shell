@@ -21,12 +21,11 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-
 	printf("$ ");
 	buff_count = getline(&buffer, &buff_size, stdin);
-	buff_count = strlen(buffer);
 	if (buff_count == EOF) /*Control D*/
 		break;
+	printf("Buffer = %s\n", buffer);
 	buffer = strtok(buffer, "\n");
 	child_pid = fork();
 	if (child_pid == -1)
@@ -40,10 +39,6 @@ int main(int ac, char **av, char **env)
 	}
 	else
 		wait(&status);
-
-
-	printf("total chars: %li\n", buff_count);
-
 	free(arguments);
 	}
 	free(buffer);

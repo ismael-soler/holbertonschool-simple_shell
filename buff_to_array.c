@@ -16,7 +16,6 @@ char **buff_to_array(char *string, char delimitator)
 	char delim[1];
 
 	delim[0] = delimitator;
-
 	if (string != NULL)
 		for (i = 0; string[i]; i++)
 			if (string[i] == delimitator)
