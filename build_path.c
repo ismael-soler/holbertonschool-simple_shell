@@ -2,31 +2,26 @@
 /*
  * search_path - insert path
  * @buffer: string with commands
- * @path: string with path
  * Return: pointer to array;
  */
-char **search_path(char *buffer)
+char **build_path(char *buffer)
 {
 	char **array_dir = NULL, **array_arg = NULL;
-	int i, size_path = 0;
+	int i, path_size = 0;
 	char *aux;
 	struct stat st;
-	char *path;
 
-	path = _getenv("PATH");
-	array_dir = buff_to_array(path, ':');
+	array_dir = buff_to_array(_getenv("PATH"), ":");
 	if (buffer[0] == '/')
 	{
-		array_arg = buff_to_array(buffer, ' ');
+		array_arg = buff_to_array(buffer, " \n\t");
 		return (array_arg);
 	}
-	array_arg = buff_to_array(buffer, ' ');
-	for (i = 0; array_arg[i]; i++)
-		printf("%s\n", array_arg[i]);
+	array_arg = buff_to_array(buffer, " \n\t");
 	for (i = 0; array_dir; i++)
 	{
-		size_path = (strlen(array_dir[i]) + strlen(array_arg[0]) + 2);
-		aux = malloc(sizeof(char) * size_path);
+		path_size = (strlen(array_dir[i]) + strlen(array_arg[0]) + 2);
+		aux = malloc(sizeof(char) * path_size);
 		if (aux == NULL)
 			return (NULL);
 		strcpy(aux, array_dir[i]);
@@ -36,7 +31,7 @@ char **search_path(char *buffer)
 			break;
 		if (stat(aux, &st) == '1')
 			perror("Error de stat:");
-		free (aux);
+		free(aux);
 	}
 	array_arg[0] = malloc(strlen(aux) * sizeof(char));
 	strcpy(array_arg[0], aux);

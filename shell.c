@@ -25,7 +25,6 @@ int main(int ac, char **av, char **env)
 	buff_count = getline(&buffer, &buff_size, stdin);
 	if (buff_count == EOF) /*Control D*/
 		break;
-	printf("Buffer = %s\n", buffer);
 	buffer = strtok(buffer, "\n");
 	child_pid = fork();
 	if (child_pid == -1)
@@ -35,7 +34,6 @@ int main(int ac, char **av, char **env)
 		arguments = build_path(buffer);
 		if (execve(arguments[0], arguments, NULL) == -1)
 			perror("Error");
-		printf("Despues de execve\n");
 	}
 	else
 		wait(&status);
