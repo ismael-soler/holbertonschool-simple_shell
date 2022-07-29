@@ -5,13 +5,15 @@
  * @path: string with path
  * Return: pointer to array;
  */
-char **search_path(char *buffer, char *path)
+char **search_path(char *buffer)
 {
 	char **array_dir = NULL, **array_arg = NULL;
 	int i, size_path = 0;
 	char *aux;
 	struct stat st;
+	char *path;
 
+	path = _getenv("PATH");
 	array_dir = buff_to_array(path, ':');
 	if (buffer[0] == '/')
 	{

@@ -19,7 +19,7 @@ extern char **environ;
 int check_mode(void);
 char *_getenv(const char *);
 char **buff_to_array(char *, char);
-char **search_path(char *, char *);
+char **build_path(char *);
 
 #endif
 

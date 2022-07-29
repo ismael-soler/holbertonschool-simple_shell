@@ -32,7 +32,7 @@ int main(int ac, char **av, char **env)
 		perror("Error");
 	else if (child_pid == 0)
 	{
-		arguments = search_path(buffer, _getenv("PATH"));
+		arguments = build_path(buffer);
 		if (execve(arguments[0], arguments, NULL) == -1)
 			perror("Error");
 		printf("Despues de execve\n");
