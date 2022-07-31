@@ -32,8 +32,8 @@ int main(int ac, char **av, char **env)
 	if (child_pid == -1)
 		perror("Error");
 	else if (child_pid == 0)
-	{
-		arguments = build_path(buffer);
+	{	arguments = build_path(buffer);//La funcion afuera funciona,aca no
+		env_built_in(arguments);
 		if (execve(arguments[0], arguments, NULL) == -1)
 			perror("Error");
 	}
