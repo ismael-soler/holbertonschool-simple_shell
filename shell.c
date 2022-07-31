@@ -25,6 +25,8 @@ int main(int ac, char **av, char **env)
 	buff_count = getline(&buffer, &buff_size, stdin);
 	if (buff_count == EOF) /*Control D*/
 		break;
+	if (buffer[0] == '\n')
+		continue;
 	buffer = strtok(buffer, "\n");
 	child_pid = fork();
 	if (child_pid == -1)
