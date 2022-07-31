@@ -7,10 +7,11 @@ void env_built_in(char **arguments)
 {
 	int i = 0, j = 0;
 
-	if (arguments[1] == NULL && (strcmp(arguments[0], "env") == 0))
+	if (strcmp(arguments[0], "env") == 0)
 	{
 		for (i = 0; environ[i]; i++)
 			printf("%s\n", environ[i]);
-		return;
+		free(buffer);
+		exit(0);
 	}
 }
