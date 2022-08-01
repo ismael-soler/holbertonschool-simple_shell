@@ -11,6 +11,7 @@ void env_built_in(char **arguments)
 	{
 		for (i = 0; environ[i]; i++)
 			printf("%s\n", environ[i]);
+		/*free(buffer);*/
 		exit(0);
 	}
 }

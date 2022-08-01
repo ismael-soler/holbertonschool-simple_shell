@@ -20,7 +20,9 @@ int check_mode(void);
 char *_getenv(const char *);
 char **buff_to_array(char *, char *);
 char **build_path(char *);
-void env_built_in(char **arguments);
+void env_built_in(char**);
+void exit_built_in(char**);
+char *_start_();
 
 #endif
 
