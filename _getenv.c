@@ -8,9 +8,8 @@
 
 char *_getenv(const char *name)
 {
-	extern char **environ;
 	int i = 0, c_len;
-	char *var ;
+	char *var;
 
 	c_len = strlen(name);
 	if (name == NULL)
