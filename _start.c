@@ -17,12 +17,12 @@ char *_start_(void)
 		free(buffer);
 		exit(0);
 	}
-	if (strcmp(buffer, "exit\n") == 0)
+	buffer = strtok(buffer, "\n");
+	if (strcmp(buffer, "exit") == 0)
 	{
 		free(buffer);
 		printf("buffer libeardo en start");
 		exit(0);
 	}
-
 	return (buffer);
 }

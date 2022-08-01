@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * check_env - implement de corresponding built in
+ * check_input - implement de corresponding built in
  * @arguments: pointer to array with user inputs
  */
 
-int check_env(char *buffer)
+int check_input(char *buffer)
 {
 	int i = 0;
 
