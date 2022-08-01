@@ -10,6 +10,7 @@ char **build_path(char *buffer)
 	int i, path_size = 0;
 	char *aux = NULL;
 	struct stat st;
+	int flag = 0;
 
 	array_dir = buff_to_array(_getenv("PATH"), ":");
 	if (buffer[0] == '/')
@@ -18,7 +19,7 @@ char **build_path(char *buffer)
 		return (array_arg);
 	}
 	array_arg = buff_to_array(buffer, " \n\t");
-	for (i = 0; array_dir; i++)
+	for (i = 0; i < 7; i++)
 	{
 		path_size = (strlen(array_dir[i]) + strlen(array_arg[0]) + 2);
 		aux = malloc(sizeof(char) * path_size);
@@ -27,19 +28,22 @@ char **build_path(char *buffer)
 		strcpy(aux, array_dir[i]);
 		strcat(aux, "/");
 		strcat(aux, array_arg[0]);
+		printf("%s\n", aux);
 		if (stat(aux, &st) == 0)
+		{
+			flag = 1;
 			break;
+		}
 		free(aux);
-		aux = NULL;
 	}
 	free(array_dir);
-	if (aux)
+	if (flag == 1)
 	{
-		array_arg[0] = malloc(strlen(aux) * sizeof(char));
+		/*array_arg[0] = malloc(strlen(aux) * sizeof(char));*/
 		strcpy(array_arg[0], aux);
 		free(aux);
 	}
-	else if (aux == NULL)
+	else if (flag == 0)
 	{
 		perror("Command doesn't exist");
 		return (NULL);
