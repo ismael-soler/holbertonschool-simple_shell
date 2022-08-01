@@ -15,7 +15,13 @@ char *_start_(void)
 	if (getline(&buffer, &buffsize, stdin) == -1)
 	{
 		free(buffer);
-		return (NULL);
+		exit(0);
+	}
+	if (strcmp(buffer, "exit\n") == 0)
+	{
+		free(buffer);
+		printf("buffer libeardo en start");
+		exit(0);
 	}
 
 	return (buffer);

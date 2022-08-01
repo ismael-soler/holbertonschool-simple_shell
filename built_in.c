@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * built_in - implement de corresponding built in
+ * check_env - implement de corresponding built in
  * @arguments: pointer to array with user inputs
  */
 
-int built_in(char *buffer, char **buff)
+int check_env(char *buffer)
 {
 	int i = 0;
 
@@ -15,10 +15,5 @@ int built_in(char *buffer, char **buff)
 		printf("Despues del for de env\n");
 		return (1);
 	}
-	if (strcmp(buffer, "exit") == 0)
-	{
-		printf("Estoy adentro del if de exit\n");
-		free(buff);
-		exit(0);
-	}
+	return (0);
 }

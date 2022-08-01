@@ -16,7 +16,7 @@ int check_mode(void);
 char *_getenv(const char *);
 char **buff_to_array(char *, char *);
 char **build_path(char *);
-int built_in(char *);
+int check_env(char *);
 char *_start_();
 
 #endif

@@ -32,6 +32,7 @@ char **build_path(char *buffer)
 		free(aux);
 		aux = NULL;
 	}
+	free(array_dir);
 	if (aux)
 	{
 		array_arg[0] = malloc(strlen(aux) * sizeof(char));
