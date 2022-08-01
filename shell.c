@@ -15,7 +15,6 @@ int main(int ac, char **av, char **env)
 	int child_pid, status;
 	(void)ac;
 	(void)av;
-	(void)env;
 
 	while (1)
 	{
@@ -25,6 +24,12 @@ int main(int ac, char **av, char **env)
 		if (buffer[0] == '\n')
 			continue;
 		buffer = strtok(buffer, "\n");
+		printf("Buffer desp de strtok %s\n", buffer);
+		if (built_in(buffer) == 1)
+			continue;
+		if ((arguments = build_path(buffer)) == NULL)
+			continue;
+		printf("despues de built in en main\n");
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -33,10 +38,7 @@ int main(int ac, char **av, char **env)
 		}
 		else if (child_pid == 0)
 		{
-			arguments = build_path(buffer);
-			exit_built_in(arguments);
-			env_built_in(arguments);
-			if (execve(arguments[0], arguments, environ) == -1)
+			if (execve(arguments[0], arguments, env) == -1)
 			{
 				perror("Error");
 				exit(-1);

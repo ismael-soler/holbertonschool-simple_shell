@@ -8,7 +8,7 @@ char **build_path(char *buffer)
 {
 	char **array_dir = NULL, **array_arg = NULL;
 	int i, path_size = 0;
-	char *aux;
+	char *aux = NULL;
 	struct stat st;
 
 	array_dir = buff_to_array(_getenv("PATH"), ":");
@@ -29,15 +29,19 @@ char **build_path(char *buffer)
 		strcat(aux, array_arg[0]);
 		if (stat(aux, &st) == 0)
 			break;
-		if (stat(aux, &st) == '1')
-			perror("Error de stat:");
 		free(aux);
+		aux = NULL;
 	}
 	if (aux)
 	{
 		array_arg[0] = malloc(strlen(aux) * sizeof(char));
 		strcpy(array_arg[0], aux);
 		free(aux);
+	}
+	else if (aux == NULL)
+	{
+		perror("Command doesn't exist");
+		return (NULL);
 	}
 	return (array_arg);
 }

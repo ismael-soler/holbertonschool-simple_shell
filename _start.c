@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _start_ - check mode, generate prompt and buffer with arguments
+ * _start_ - check mode, generate prompt, Ctrl D and buffer with arguments
  * Return: Buffer string with arguments
  */
 
@@ -17,5 +17,6 @@ char *_start_(void)
 		free(buffer);
 		return (NULL);
 	}
+
 	return (buffer);
 }
