@@ -12,7 +12,7 @@ int check_input(char *buffer)
 	{
 		for (i = 0; environ[i]; i++)
 			printf("%s\n", environ[i]);
-		printf("Despues del for de env\n");
+		free(buffer);
 		return (1);
 	}
 	return (0);

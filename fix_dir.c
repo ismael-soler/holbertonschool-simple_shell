@@ -11,7 +11,7 @@ char *fix_dir(char *argument)
 	char *aux = NULL;
 	struct stat st;
 
-	array_dir = buff_to_array((_getenv("PATH"), ":"));
+	array_dir = buff_to_array(_getenv("PATH"), ":");
 
 	for (i = 0; array_dir; i++)
 	{
@@ -30,7 +30,7 @@ char *fix_dir(char *argument)
 	
 	if (aux)
 	{
-		argument = malloc(strlen(aux) + sizeof(char));
+		argument = malloc(strlen(aux) * sizeof(char) + 1);
 		strcpy(argument, aux);
 		free(aux);
 	}

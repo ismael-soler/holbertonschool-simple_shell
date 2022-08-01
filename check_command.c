@@ -6,13 +6,21 @@
  */
 char **check_command(char *buffer)
 {
-	char **array_dir = NULL, **array_arg = NULL;
+	char **array_arg = NULL;
 	struct stat st;
 
 	array_arg = buff_to_array(buffer, " \n\t");
-	if (buffer[0] == '/')
-		return (array_arg);
 	free(buffer);
+	if (array_arg[0][0] == '/')
+	{
+		if (stat(array_arg[0], &st) == 0)
+			return (array_arg);
+		else
+		{
+			free(array_arg);
+			return (NULL);
+		}
+	}
 	array_arg[0] = fix_dir(array_arg[0]);
 	if (stat(array_arg[0], &st) == 0)
 		return (array_arg);
@@ -22,4 +30,5 @@ char **check_command(char *buffer)
 		free(array_arg);
 		return (NULL);
 	}
-	
+	return (NULL);
+}	

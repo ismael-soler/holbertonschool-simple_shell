@@ -17,6 +17,11 @@ char *_start_(void)
 		free(buffer);
 		exit(0);
 	}
+	if (buffer[0] == '\n')
+	{
+		free(buffer);
+		return (NULL);
+	}
 	buffer = strtok(buffer, "\n");
 	if (strcmp(buffer, "exit") == 0)
 	{

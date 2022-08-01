@@ -15,24 +15,23 @@ int main(int ac, char **av, char **env)
 	int child_pid, status;
 	(void)ac;
 	(void)av;
+	(void)env;
 
 	while (1)
 	{
 		buffer = _start_(); /*Chequeo el modo interactivo, control D, exit y getline*/
-		if (buffer[0] == '\n')
+		if (buffer == NULL)
 			continue;
-		printf("antes del strtok");
-		buffer = strtok(buffer, "\n");
-		printf("Buffer desp de strtok %s\n", buffer);
-		if (check_env(buffer) == 1)
+		if (check_input(buffer) == 1)
 			continue;
-		printf("antes del build_path\n");
-		if ((arguments = build_path(buffer)) == NULL)
+		arguments = check_command(buffer);
+		if (arguments == NULL)
 		{
+			perror("Poner error");
+			free(arguments[0]);
 			free(arguments);
 			continue;
 		}
-		printf("despues de built in en main\n");
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -41,20 +40,18 @@ int main(int ac, char **av, char **env)
 		}
 		else if (child_pid == 0)
 		{
-			if (execve(arguments[0], arguments, env) == -1)
+			if (execve(arguments[0], arguments, NULL) == -1)
 			{
-				perror("Error");
-				exit(-1);
-				
+				perror("err00r");
+				exit(-1);	
 			}
-			free(arguments[0]);
 		}
 		else
 		{
 			wait(&status);
 			free(arguments[0]);
+			free(arguments);
 		}
 	}
-	free(buffer);
 	return (0);
 }

@@ -20,4 +20,3 @@ int check_input(char *);
 char *_start_();
 
 #endif
-
