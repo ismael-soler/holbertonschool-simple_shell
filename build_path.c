@@ -1,5 +1,5 @@
 #include "main.h"
-/*
+/**
  * build_path - insert the path to command entered by input
  * @buffer: string with commands
  * Return: pointer to array with arguments
