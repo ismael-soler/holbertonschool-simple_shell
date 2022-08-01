@@ -1,8 +1,8 @@
 #include "main.h"
 /*
- * search_path - insert path
+ * build_path - insert the path to command entered by input
  * @buffer: string with commands
- * Return: pointer to array;
+ * Return: pointer to array with arguments
  */
 char **build_path(char *buffer)
 {

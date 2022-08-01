@@ -1,6 +1,7 @@
 #include "main.h"
 /**
- * start - ver lo de interactivo, generar el buffer y devolver buffer
+ * start - check mode, generate prompt and buffer with arguments
+ * Return: Buffer string with arguments
  */
 
 char *_start_(void)
