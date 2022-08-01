@@ -36,7 +36,7 @@ int main(int ac, char **av, char **env)
 			arguments = build_path(buffer);
 			exit_built_in(arguments);
 			env_built_in(arguments);
-			if (execve(arguments[0], arguments, NULL) == -1)
+			if (execve(arguments[0], arguments, environ) == -1)
 			{
 				perror("Error");
 				exit(-1);
