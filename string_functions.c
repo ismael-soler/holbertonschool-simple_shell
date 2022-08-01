@@ -21,9 +21,10 @@ int _strlen(char *string)
 /**
  * _strcat - concatenate two strings
  * @dest: pointer to destinate string
- * @char: pointer to string to be concatenated on dest
+ * @src: pointer to string to be concatenated on dest
  * Return: "dest"+"src"
  */
+
 char *_strcat(char *dest, char *src)
 {
 	int i = 0, j = 0;
@@ -31,7 +32,7 @@ char *_strcat(char *dest, char *src)
 	for (i = 0; dest[i]; i++)
 	{
 	}
-	for (j = 0; src[i]: j++)
+	for (j = 0; src[i]; j++)
 	{
 		dest[i] = src[j];
 		i++;
@@ -46,6 +47,7 @@ char *_strcat(char *dest, char *src)
  * @s2: pointer to a string
  * Return: 0 if they are equal, other number if they are different.
  */
+
 int _strcmp(char *s1, char *s2)
 {
 	int i = 0, j = 0;
@@ -68,6 +70,7 @@ int _strcmp(char *s1, char *s2)
  * @src: pointer to the original string
  * Return: copied string
  */
+
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;

@@ -30,10 +30,13 @@ int main(int ac, char **av, char **env)
 	buffer = strtok(buffer, "\n");
 	child_pid = fork();
 	if (child_pid == -1)
+	{
 		perror("Error");
-		exit(1); //Exit failure es 1
+		exit(1); /*Exit failure es 1*/
+	}
 	else if (child_pid == 0)
-	{	arguments = build_path(buffer);//La funcion afuera funciona,aca no
+	{
+		arguments = build_path(buffer); /*La funcion afuera funciona,aca no*/
 		env_built_in(arguments);
 		if (execve(arguments[0], arguments, NULL) == -1)
 		{
