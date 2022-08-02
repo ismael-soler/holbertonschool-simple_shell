@@ -12,7 +12,7 @@ char **buff_to_array(char *string, char *delimitators)
 	char **array = NULL;
 	int i, k, j;
 	int argument_count = 2;
-	char *token;
+	char *token, *aux_string = NULL;
 
 	if (string != NULL)
 		for (i = 0; string[i]; i++)
@@ -27,8 +27,11 @@ char **buff_to_array(char *string, char *delimitators)
 		return (NULL);
 	if (string == NULL)
 		return (NULL);
-
-	token = strtok(string, delimitators);
+	aux_string = malloc(strlen(string) + 1);
+	if (aux_string == NULL)
+		return (NULL);
+	strcpy(aux_string, string);
+	token = strtok(aux_string, delimitators);
 	for (k = 0; k < argument_count - 1; k++)
 	{
 		array[k] = token;

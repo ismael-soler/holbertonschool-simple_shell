@@ -28,8 +28,6 @@ int main(int ac, char **av, char **env)
 		if (arguments == NULL)
 		{
 			perror("Poner error");
-			free(arguments[0]);
-			free(arguments);
 			continue;
 		}
 		child_pid = fork();
@@ -49,9 +47,10 @@ int main(int ac, char **av, char **env)
 		else
 		{
 			wait(&status);
-			free(arguments[0]);
-			free(arguments);
 		}
+
+	free(arguments[0]);
+	free(arguments);
 	}
 	return (0);
 }

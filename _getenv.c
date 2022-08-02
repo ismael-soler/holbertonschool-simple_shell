@@ -9,7 +9,7 @@
 char *_getenv(const char *name)
 {
 	int i = 0, c_len;
-	char *var;
+	char *var = NULL;
 
 	c_len = strlen(name);
 	if (name == NULL)
@@ -20,9 +20,16 @@ char *_getenv(const char *name)
 	for (i = 0; environ[i]; i++)
 	{
 		if (strncmp(environ[i], name, c_len) == 0)
-			var = environ[i];
+		{
+			var = malloc(strlen(environ[i] + 1));
+			if (var == NULL)
+				return (NULL);
+			strcpy(var, environ[i]);
+			break;
+		}
 	}
 	var = strtok(var, "=");
 	var = strtok(NULL, "=");
+	printf("var = %s\n", var);
 	return (var);
 }
