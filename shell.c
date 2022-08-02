@@ -42,12 +42,11 @@ int main(int ac, char **av, char **env)
 				perror("err00r");
 				exit(-1);	
 			}
-			free(array de argumentos); /* ????? */
 		}
 		else
 		{
 			wait(&status);
-			free(array de strings);
+			free_array(arguments);
 		}
 	}
 	return (0);

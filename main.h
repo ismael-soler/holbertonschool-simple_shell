@@ -18,5 +18,6 @@ char **check_command(char *);
 char *fix_dir(char *);
 int check_input(char *);
 char *_start_();
+int free_array(char **);
 
 #endif
