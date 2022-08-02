@@ -8,7 +8,6 @@ char **check_command(char *buffer)
 {
 	char **array_arg = NULL;
 	struct stat st;
-	int i, j;
 
 	array_arg = buff_to_array(buffer, " \n\t");
 	printf("arg[0] antes de if en chcommand %s\n", array_arg[0]);
