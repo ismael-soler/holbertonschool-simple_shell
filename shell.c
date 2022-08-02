@@ -50,6 +50,7 @@ int main(int ac, char **av, char **env)
 
 	free(arguments[0]);
 	free(arguments);
+	free(buffer);
 	}
 	return (0);
 }
