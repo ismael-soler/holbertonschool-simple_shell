@@ -48,7 +48,7 @@ int main(int ac, char **av, char **env)
 			wait(&status);
 		}
 
-	/*free(arguments[0]);*/
+	free(arguments[0]);
 	free(arguments);
 	free(buffer);
 	}

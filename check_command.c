@@ -10,7 +10,7 @@ char **check_command(char *buffer)
 	struct stat st;
 
 	array_arg = buff_to_array(buffer, " \n\t");
-	if (array_arg[0][0] == '/')
+	if (strchr(buffer, '/'))
 	{
 		if (stat(array_arg[0], &st) == 0)
 			return (array_arg);
