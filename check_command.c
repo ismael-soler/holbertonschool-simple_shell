@@ -25,8 +25,8 @@ char **check_command(char *buffer)
 		return (array_arg);
 	else
 	{
-		/*free(array_arg[0]);*/
-		/*free(array_arg);*/
+		free(array_arg[0]);
+		free(array_arg);
 		return (NULL);
 	}
 	return (NULL);

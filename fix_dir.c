@@ -8,7 +8,7 @@ char *fix_dir(char *argument)
 {
 	int i = 0, path_size = 0;
 	char **array_dir = NULL;
-	char *aux = NULL, *path = NULL;
+	char *aux = NULL, *path = NULL, *argument_aux = NULL;
 	struct stat st;
 	
 	path = _getenv("PATH");
@@ -27,12 +27,13 @@ char *fix_dir(char *argument)
 			break;
 		free(aux);
 	}
+	free(argument);
 	free(array_dir);
 	if (aux)
 	{
-		argument = malloc(strlen(aux) * sizeof(char));
-		strcpy(argument, aux);
+		argument_aux = malloc(strlen(aux) * sizeof(char));
+		strcpy(argument_aux, aux);
 		free(aux);
 	}
-	return (argument);
+	return (argument_aux);
 }

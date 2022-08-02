@@ -26,7 +26,6 @@ char *_start_(void)
 	if (strcmp(buffer, "exit") == 0)
 	{
 		free(buffer);
-		printf("buffer libeardo en start");
 		exit(0);
 	}
 	return (buffer);
