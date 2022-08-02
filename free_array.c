@@ -10,9 +10,9 @@ int free_array(char **array)
 {
 	int i = 0;
 
-	for (i = 0; array[i] != NULL; i++)
+	for (i = 0; array[i]; i++)
 		;
-	for (; array[i]; i--)
+	for (; i >= 0; i--)
 	{
 		free(array[i]);
 	}
