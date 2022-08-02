@@ -30,6 +30,5 @@ char *_getenv(const char *name)
 	}
 	var = strtok(var, "=");
 	var = strtok(NULL, "=");
-	printf("var = %s\n", var);
 	return (var);
 }
