@@ -10,10 +10,12 @@ int free_array(char **array)
 {
 	int i = 0;
 
-	for (i = 0; array[i + 1]; i++)
+	for (i = 0; array[i] != NULL; i++)
+		;
+	for (; array[i]; i--)
 	{
 		free(array[i]);
 	}
 	free(array);
-	return(0);
+	return (0);
 }

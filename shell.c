@@ -40,14 +40,14 @@ int main(int ac, char **av, char **env)
 			if (execve(arguments[0], arguments, env) == -1)
 			{
 				perror("err00r");
-				exit(-1);	
+				exit(-1);
 			}
 		}
 		else
 		{
 			wait(&status);
-			free_array(arguments);
 		}
+		free_array(arguments);
 	}
 	return (0);
 }

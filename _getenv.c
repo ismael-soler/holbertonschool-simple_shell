@@ -10,6 +10,7 @@ char *_getenv(const char *name)
 {
 	int i = 0, c_len;
 	char *var = NULL;
+	char *token1 = NULL, *token2 = NULL, *token3 = NULL;
 
 	c_len = strlen(name);
 	if (name == NULL)
@@ -28,7 +29,12 @@ char *_getenv(const char *name)
 			break;
 		}
 	}
-	var = strtok(var, "=");
-	var = strtok(NULL, "=");
-	return (var);
+
+	token1 = strtok(var, "=");
+	token2 = strdup(token1);
+	token1 = strtok(NULL, "=");
+	token3 = strdup(token1);
+	free(var);
+	free(token2);
+	return (token3);
 }

@@ -10,10 +10,9 @@ char *fix_dir(char *argument)
 	char **array_dir = NULL;
 	char *aux = NULL, *path = NULL, *argument_aux = NULL;
 	struct stat st;
-	
-	path = _getenv("PATH");
+
+	path = _getenv("PATH=");
 	array_dir = buff_to_array(path, ":");
-	/*free(path);*/
 	for (i = 0; array_dir[i + 1]; i++)
 	{
 		path_size = (strlen(array_dir[i]) + strlen(argument) + 2);
@@ -27,10 +26,10 @@ char *fix_dir(char *argument)
 			break;
 		free(aux);
 	}
-	free(argument);
-	free(array_dir);
+	free_array(array_dir);
 	if (aux)
 	{
+		free(argument); /* liberamos porque vamos a sustituir*/
 		argument_aux = malloc(strlen(aux) * sizeof(char));
 		strcpy(argument_aux, aux);
 		free(aux);

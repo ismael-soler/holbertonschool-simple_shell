@@ -1,7 +1,8 @@
 #include "main.h"
 /**
  * check_input - implement de corresponding built in
- * @arguments: pointer to array with user inputs
+ * @buffer: pointer to string
+ * Return: 0 or 1
  */
 
 int check_input(char *buffer)
