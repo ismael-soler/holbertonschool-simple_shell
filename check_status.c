@@ -12,7 +12,7 @@ int check_status(int pidC, int *status)
 	w = waitpid(pidC, status, 0); /*El 0 espera el proceso hijo con el pidC*/
 
 	if (w == -1)
-		return (-1)
+		return (-1);
 	if (WIFEXITED(status)) /*Si termina normal, retorna el exit status del child*/
 		return (WEXISTATUS(*status));
 	else if (WIFSIGNALED(status))/*Si el child fue terminado por una señal retorna el numero de esa señal*/
