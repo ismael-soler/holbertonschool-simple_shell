@@ -47,7 +47,7 @@ int main(int ac, char **av, char **env)
 		{
 			wait(&status);
 		}
-		if (arguments);
+		if (arguments)
 			free_array(arguments);
 	}
 	return (0);
