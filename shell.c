@@ -12,9 +12,8 @@ int main(int ac, char **av, char **env)
 {
 	char **arguments = NULL;
 	char *buffer = NULL;
-	int child_pid, status, return_value = 0
+	int child_pid, status, return_value = 0;
 	(void)ac;
-	(void)av;
 
 	while (1)
 	{
@@ -39,7 +38,7 @@ int main(int ac, char **av, char **env)
 		{
 			if (execve(arguments[0], arguments, env) == -1)
 			{
-				perror(argv[0]);
+				perror(av[0]);
 				exit(-1);
 			}
 		}

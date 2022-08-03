@@ -13,11 +13,11 @@ int check_status(int pidC, int *status)
 
 	if (w == -1)
 		return (-1);
-	if (WIFEXITED(status)) /*Si termina normal, retorna el exit status del child*/
-		return (WEXISTATUS(*status));
-	else if (WIFSIGNALED(status))/*Si el child fue terminado por una señal retorna el numero de esa señal*/
+	if (WIFEXITED(*status)) /*Si termina normal, retorna el exit status del child*/
+		return (WEXITSTATUS(*status));
+	else if (WIFSIGNALED(*status))/*Si el child fue terminado por una señal retorna el numero de esa señal*/
 		return(WTERMSIG(*status));
-	else if (WIFSTOPPED(status))/*Si el child fue detenido por una señal retorna el numero de la señal*/
+	else if (WIFSTOPPED(*status))/*Si el child fue detenido por una señal retorna el numero de la señal*/
 		return(WSTOPSIG(*status));
 	return (0);
 
