@@ -22,10 +22,11 @@ char *_getenv(const char *name)
 	{
 		if (strncmp(environ[i], name, c_len) == 0)
 		{
-			var = malloc(strlen(environ[i] + 1));
+			/*var = malloc(strlen(environ[i] + 2));
 			if (var == NULL)
 				return (NULL);
-			strcpy(var, environ[i]);
+			strcpy(var, environ[i]);*/
+			var = strdup(environ[i]);
 			break;
 		}
 	}
