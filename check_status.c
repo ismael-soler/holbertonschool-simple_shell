@@ -9,7 +9,7 @@ int check_status(int pidC, int *status)
 {
 	pid_t w = 0;
 
-	w = waitpid(pidC, &status, 0); /*El 0 espera el proceso hijo con el pidC*/
+	w = waitpid(pidC, status, 0); /*El 0 espera el proceso hijo con el pidC*/
 
 	if (w == -1)
 		return (-1)
