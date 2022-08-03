@@ -8,7 +8,8 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <sys/types.h>
-#include <sys/stat.h>
+#include <sys/stat.h>i
+#include <sys/wait.h>
 
 extern char **environ;
 
@@ -19,5 +20,6 @@ char *fix_dir(char *);
 int check_input(char *);
 char *_start_();
 int free_array(char **);
+int check_status(int, int *);
 
 #endif
