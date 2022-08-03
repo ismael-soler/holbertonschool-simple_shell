@@ -10,8 +10,19 @@ char **check_command(char *buffer)
 	struct stat st;
 
 	array_arg = buff_to_array(buffer, " \n\t");
-	if (strchr(array_arg[0], 47))
+	if (array_arg)
 	{
+		if (strchr(array_arg[0], 47))
+		{
+			if (stat(array_arg[0], &st) == 0)
+				return (array_arg);
+			else
+			{
+				free_array(array_arg);
+				return (NULL);
+			}
+		}
+		array_arg[0] = fix_dir(array_arg[0]);
 		if (stat(array_arg[0], &st) == 0)
 			return (array_arg);
 		else
@@ -20,13 +31,8 @@ char **check_command(char *buffer)
 			return (NULL);
 		}
 	}
-	array_arg[0] = fix_dir(array_arg[0]);
-	if (stat(array_arg[0], &st) == 0)
-		return (array_arg);
 	else
 	{
-		free_array(array_arg);
 		return (NULL);
 	}
-	return (NULL);
 }

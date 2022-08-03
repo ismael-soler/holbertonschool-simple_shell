@@ -33,6 +33,8 @@ char **buff_to_array(char *string, char *delimitators)
 	token = strtok(aux_string, delimitators);
 	for (k = 0; k < argument_count - 1; k++)
 	{
+		if (token == NULL)
+			break;
 		array[k] = strdup(token);
 		token = strtok(NULL, delimitators);
 	}
