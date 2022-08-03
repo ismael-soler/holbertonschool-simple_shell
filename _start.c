@@ -23,7 +23,7 @@ char *_start_(void)
 		return (NULL);
 	}
 	buffer = strtok(buffer, "\n");
-	if (strncmp(buffer, "exit", 5) == 0)
+	if (strcmp(buffer, "exit") == 0)
 	{
 		free(buffer);
 		exit(0);

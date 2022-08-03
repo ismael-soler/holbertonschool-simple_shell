@@ -15,6 +15,8 @@ char *fix_dir(char *argument)
 	array_dir = buff_to_array(path, ":");
 	for (i = 0; array_dir[i + 1]; i++)
 	{
+		if (aux)
+			free(aux);
 		path_size = (strlen(array_dir[i]) + strlen(argument) + 2);
 		aux = malloc(sizeof(char) * path_size);
 		if (aux == NULL)
@@ -24,13 +26,12 @@ char *fix_dir(char *argument)
 		strcat(aux, argument);
 		if (stat(aux, &st) == 0)
 			break;
-		free(aux);
 	}
 	free_array(array_dir);
 	if (aux)
 	{
 		free(argument); /* liberamos porque vamos a sustituir*/
-		argument_aux = malloc(strlen(aux) * sizeof(char));
+		argument_aux = malloc(strlen(aux) * sizeof(char) + 1);
 		strcpy(argument_aux, aux);
 		free(aux);
 	}

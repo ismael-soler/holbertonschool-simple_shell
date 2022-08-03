@@ -18,7 +18,7 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		buffer = _start_(); /*Chequeo el modo interactivo, control D, exit y getline*/
+		buffer = _start_(); /*Modo interactivo, control D, exit y getline*/
 		if (buffer == NULL)
 			continue;
 		if (check_input(buffer) == 1)
@@ -47,7 +47,8 @@ int main(int ac, char **av, char **env)
 		{
 			wait(&status);
 		}
-		free_array(arguments);
+		if (arguments);
+			free_array(arguments);
 	}
 	return (0);
 }
