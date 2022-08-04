@@ -1,10 +1,13 @@
 #include "main.h"
+
 /**
  * check_command - insert the path to command entered by input
  * @buffer: string with commands
+ * @av: argument value
  * Return: pointer to array with arguments
  */
-char **check_command(char *buffer)
+
+char **check_command(char *buffer, char *av)
 {
 	char **array_arg = NULL;
 	struct stat st;
@@ -16,15 +19,17 @@ char **check_command(char *buffer)
 		{
 			if (stat(array_arg[0], &st) == 0)
 				return (array_arg);
+			print_error(av, array_arg[0]);
 			free_array(array_arg);
 			return (NULL);
 		}
-		array_arg[0] = fix_dir(array_arg[0]); /*se ejecuta cuando no contiene un path*/
+		array_arg[0] = fix_dir(array_arg[0], av); /*caso cuando no contiene un path*/
 		if (array_arg[0])
 		{
-		if (stat(array_arg[0], &st) == 0)
-			return (array_arg);
-		free_array(array_arg);
+			if (stat(array_arg[0], &st) == 0)
+				return (array_arg);
+			print_error(av, array_arg[0]);
+			free_array(array_arg);
 		}
 		return (NULL);
 	}

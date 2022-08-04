@@ -22,10 +22,9 @@ int main(int ac, char **av, char **env)
 			continue;
 		if (check_input(buffer) == 1)
 			continue;
-		arguments = check_command(buffer);
+		arguments = check_command(buffer, av[0]);
 		if (arguments == NULL)
 		{
-			perror(av[0]);
 			exit_value = 127;
 			continue;
 		}

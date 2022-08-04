@@ -15,11 +15,12 @@ extern char **environ;
 
 char *_getenv(const char *);
 char **buff_to_array(char *, char *);
-char **check_command(char *);
-char *fix_dir(char *);
+char **check_command(char *, char *);
+char *fix_dir(char *, char *);
 int check_input(char *);
 char *_start_();
 int free_array(char **);
 int check_status(int, int);
+void print_error(char *, char *);
 
 #endif
