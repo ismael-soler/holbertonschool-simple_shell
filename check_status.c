@@ -17,7 +17,7 @@ int check_status(int pidC, int status)
 		return (WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
 		return (WTERMSIG(status));
-	else if (WIFSTOPPED(status));
+	else if (WIFSTOPPED(status))
 		return (WSTOPSIG(status));
 	return (0);
 
