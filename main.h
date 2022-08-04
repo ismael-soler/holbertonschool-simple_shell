@@ -20,6 +20,6 @@ char *fix_dir(char *);
 int check_input(char *);
 char *_start_();
 int free_array(char **);
-int check_status(int, int *);
+int check_status(int, int);
 
 #endif

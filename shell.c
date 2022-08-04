@@ -12,7 +12,7 @@ int main(int ac, char **av, char **env)
 {
 	char **arguments = NULL;
 	char *buffer = NULL;
-	int child_pid, status, retrn_value = 0;
+	int child_pid, status = 0, exit_value = 0;
 	(void)ac;
 
 	while (1)
@@ -26,7 +26,7 @@ int main(int ac, char **av, char **env)
 		if (arguments == NULL)
 		{
 			perror(av[0]);
-			retrn_value = 126;
+			exit_value = 127;
 			continue;
 		}
 		child_pid = fork();
@@ -42,10 +42,10 @@ int main(int ac, char **av, char **env)
 		}
 		else
 		{
-			retrn_value = check_status(child_pid, &status);
+			exit_value = check_status(child_pid, status);
 		}
 		if (arguments)
 			free_array(arguments);
 	}
-	return (retrn_value);
+	return (exit_value);
 }

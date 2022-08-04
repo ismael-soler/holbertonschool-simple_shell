@@ -20,9 +20,12 @@ char **check_command(char *buffer)
 			return (NULL);
 		}
 		array_arg[0] = fix_dir(array_arg[0]); /*se ejecuta cuando no contiene un path*/
+		if (array_arg[0])
+		{
 		if (stat(array_arg[0], &st) == 0)
 			return (array_arg);
 		free_array(array_arg);
+		}
 		return (NULL);
 	}
 	free(array_arg);
