@@ -26,9 +26,10 @@ int main(int ac, char **av, char **env)
 		if (arguments == NULL)
 		{
 			perror(av[0]);
+			return_value = 126;
 			continue;
 		}
-		if (arguments[0][0] == 'b')
+		if (arguments[0][0] == 'b')/*Caso de que ingresen espacios en blanco solo*/
 			continue;
 		child_pid = fork();
 		if (child_pid == -1)
