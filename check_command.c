@@ -8,6 +8,8 @@ char **check_command(char *buffer)
 {
 	char **array_arg = NULL;
 	struct stat st;
+	char *blank[] = {"blank"};
+	char **blank_id = blank;
 
 	array_arg = buff_to_array(buffer, " \n\t");
 	if (array_arg[0] != NULL)
@@ -31,5 +33,6 @@ char **check_command(char *buffer)
 			return (NULL);
 		}
 	}
-	return (NULL);
+	free(array_arg);
+	return (blank_id);
 }

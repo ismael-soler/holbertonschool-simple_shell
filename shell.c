@@ -28,6 +28,8 @@ int main(int ac, char **av, char **env)
 			perror(av[0]);
 			continue;
 		}
+		if (arguments[0][0] == 'b')
+			continue;
 		child_pid = fork();
 		if (child_pid == -1)
 		{
