@@ -12,12 +12,12 @@ int main(int ac, char **av, char **env)
 {
 	char **arguments = NULL;
 	char *buffer = NULL;
-	int child_pid, status = 0, exit_value = 0, flag = 0;
+	int child_pid, status = 0, exit_value = 0;
 	(void)ac;
 
 	while (1)
 	{
-		buffer = _start_(flag); /*Modo interactivo, control D, exit y getline*/
+		buffer = _start_(exit_value); /*Modo interactivo, control D, exit y getline*/
 		if (buffer == NULL)
 			continue;
 		if (check_input(buffer) == 1)
@@ -36,18 +36,15 @@ int main(int ac, char **av, char **env)
 		}
 		else if (child_pid == 0)
 		{
-			if (execve(arguments[0], arguments, env) == -1)
-			{
-				flag = 5;
-				print_error(av[0], arguments[0]);
-			}
+			execve(arguments[0], arguments, env);
 		}
 		else
 		{
-			exit_value = check_status(child_pid, status);
+			wait(&status);
+			exit_value = WEXITSTATUS(status);
 		}
 		if (arguments)
 			free_array(arguments);
 	}
-	exit(exit_value);
+	return (exit_value);
 }

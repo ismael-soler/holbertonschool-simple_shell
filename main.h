@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <errno.h>
 
 extern char **environ;
 
@@ -20,7 +21,6 @@ char *fix_dir(char *, char *);
 int check_input(char *);
 char *_start_(int);
 int free_array(char **);
-int check_status(int, int);
 void print_error(char *, char *);
 
 #endif
