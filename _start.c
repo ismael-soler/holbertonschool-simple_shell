@@ -1,10 +1,11 @@
 #include "main.h"
 /**
  * _start_ - check mode, generate prompt, Ctrl D and buffer with arguments
+ * @flag: flag
  * Return: Buffer string with arguments
  */
 
-char *_start_(void)
+char *_start_(int flag)
 {
 	char *buffer = NULL;
 	size_t buffsize = 0;
@@ -38,7 +39,7 @@ char *_start_(void)
 	if (strstr(buffer, "exit"))
 	{
 		free(buffer);
-		exit(2);
+		exit(flag);
 	}
 	return (buffer);
 }

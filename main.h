@@ -18,7 +18,7 @@ char **buff_to_array(char *, char *);
 char **check_command(char *, char *);
 char *fix_dir(char *, char *);
 int check_input(char *);
-char *_start_();
+char *_start_(int);
 int free_array(char **);
 int check_status(int, int);
 void print_error(char *, char *);
