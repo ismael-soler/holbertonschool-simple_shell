@@ -12,7 +12,7 @@ int main(int ac, char **av, char **env)
 {
 	char **arguments = NULL;
 	char *buffer = NULL;
-	int child_pid, status, return_value = 0;
+	int child_pid, status, retrn_value = 0;
 	(void)ac;
 
 	while (1)
@@ -26,11 +26,9 @@ int main(int ac, char **av, char **env)
 		if (arguments == NULL)
 		{
 			perror(av[0]);
-			return_value = 126;
+			retrn_value = 126;
 			continue;
 		}
-		if (arguments[0][0] == 'b')/*Caso de que ingresen espacios en blanco solo*/
-			continue;
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -44,10 +42,10 @@ int main(int ac, char **av, char **env)
 		}
 		else
 		{
-			return_value = check_status(child_pid, &status);
+			retrn_value = check_status(child_pid, &status);
 		}
 		if (arguments)
 			free_array(arguments);
 	}
-	return (return_value);
+	return (retrn_value);
 }

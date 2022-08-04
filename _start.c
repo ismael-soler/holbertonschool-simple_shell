@@ -8,6 +8,7 @@ char *_start_(void)
 {
 	char *buffer = NULL;
 	size_t buffsize = 0;
+	int i;
 
 	/*Evaluo modo interactivo*/
 	if (isatty(0) == 1) /*0 el fd de stdin vale 0*/
@@ -23,6 +24,17 @@ char *_start_(void)
 		return (NULL);
 	}
 	buffer = strtok(buffer, "\n");
+
+	for (i = 0; buffer[i]; i++) /* recorre la string en busca de ' ' o '\t'*/
+	{
+		if (buffer[i] != ' ' && buffer[i] != '\t')
+			break;
+	}
+	if (buffer[i] == '\0') /*significa que recorrio hasta el final*/
+	{
+		free(buffer);
+		return (NULL);
+	}
 	if (strstr(buffer, "exit"))
 	{
 		free(buffer);
