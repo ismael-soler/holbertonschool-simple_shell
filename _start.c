@@ -38,7 +38,7 @@ char *_start_(void)
 	if (strstr(buffer, "exit"))
 	{
 		free(buffer);
-		exit(0);
+		exit(2);
 	}
 	return (buffer);
 }
