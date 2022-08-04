@@ -18,7 +18,7 @@ char *fix_dir(char *argument, char *av)
 	if (path)
 	{
 		array_dir = buff_to_array(path, ":");
-		for (i = 0; array_dir[i + 1]; i++) /*sustituye con cada PATH y el comando*/
+		for (i = 0; array_dir[i]; i++) /*sustituye con cada PATH y el comando*/
 		{
 			if (aux)
 				free(aux);
