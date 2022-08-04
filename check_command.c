@@ -10,7 +10,7 @@ char **check_command(char *buffer)
 	struct stat st;
 
 	array_arg = buff_to_array(buffer, " \n\t");
-	if (array_arg)
+	if (array_arg[0] != NULL)
 	{
 		if (strchr(array_arg[0], 47))
 		{
@@ -31,8 +31,5 @@ char **check_command(char *buffer)
 			return (NULL);
 		}
 	}
-	else
-	{
-		return (NULL);
-	}
+	return (NULL);
 }
