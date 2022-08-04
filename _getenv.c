@@ -22,19 +22,18 @@ char *_getenv(const char *name)
 	{
 		if (strncmp(environ[i], name, c_len) == 0)
 		{
-			/*var = malloc(strlen(environ[i] + 2));
-			if (var == NULL)
-				return (NULL);
-			strcpy(var, environ[i]);*/
 			var = strdup(environ[i]);
 			break;
 		}
 	}
+	if (environ[i] == NULL)
+		return (NULL);
 
 	token1 = strtok(var, "=");
 	token2 = strdup(token1);
 	token1 = strtok(NULL, "=");
-	token3 = strdup(token1);
+	if (token1)
+		token3 = strdup(token1);
 	free(var);
 	free(token2);
 	return (token3);

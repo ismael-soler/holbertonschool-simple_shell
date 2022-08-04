@@ -37,7 +37,7 @@ int main(int ac, char **av, char **env)
 		else if (child_pid == 0)
 		{
 			if (execve(arguments[0], arguments, env) == -1)
-				perror(av[0]);
+				print_error(av[0], arguments[0]);
 		}
 		else
 		{
