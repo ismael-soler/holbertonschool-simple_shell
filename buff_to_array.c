@@ -25,9 +25,12 @@ char **buff_to_array(char *string, char *delimitators)
 	array = malloc(argument_count * sizeof(char *));
 	if (array == NULL)
 		return (NULL);
-	/*aux_string = malloc(strlen(string) + 1);
-	if (aux_string == NULL)
-		return (NULL);*/
+	if (argument_count == 2)
+	{
+		array[0] = strdup(string);
+		array[1] = NULL;
+		return (array);
+	}
 	aux_string = strdup(string);
 	free(string);
 	token = strtok(aux_string, delimitators);
