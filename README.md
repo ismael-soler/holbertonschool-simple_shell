@@ -1,7 +1,7 @@
 <h1 align = "center"> C - Simple Shell </h1>
 
 <h2> Description </h2>
-<p>This project consist of the development of a command interpreter for Linux. The program tries to replicate the basic functionalities of sh shell.</p>
+<p>This project consist of the development of a command interpreter for Linux. The program tries to replicate the basic functionalities of sh shell. It was developed in C language.</p>
 
 <h2> General information </h2>
 <p>- All files will be compiled on Ubuntu 20.04 LTS using <pre><code>gcc -Wall -Werror -Wextra -pedantic -std=gnu89</code></pre></p>
@@ -46,7 +46,7 @@ $</code></pre>
   
 <tr>
   <td>check_command.c</td>
-  <td>Check if the command has a path and return an array with the arguments with the corresponding path path</td>
+  <td>Check if the command has a path and return an array with the arguments with the corresponding path</td>
   </tr>
   
 <tr>
@@ -86,5 +86,7 @@ $</code></pre>
 </table>
 
 <h2> Authors </h2>
+
 <p>Ismael Soler</p>
 <p>Ignacio Martino</p>
+
