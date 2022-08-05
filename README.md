@@ -4,7 +4,7 @@
 <p>This project consist of the development of a command interpreter for Linux. The program tries to replicate the basic functionalities of sh shell. It was developed in C language.</p>
 
 <h2> Flowchart </h2>
-<img src="https://raw.githubusercontent/ismael-soler/holbertonschool-simple_shell/master/Flowchart.jpg" />
+<p align = "center"> <img src="https://i.imgur.com/T47ttDM.png" /> </p>
 <h2> General information </h2>
 <p>- All files will be compiled on Ubuntu 20.04 LTS using <pre><code>gcc -Wall -Werror -Wextra -pedantic -std=gnu89</code></pre></p>
 <p>- The program must have the exact same output as sh (/bin/sh) as well as the exact same error output, the only difference is when an error is printed:</p>
