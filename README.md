@@ -52,7 +52,7 @@ $</code></pre>
   </tr>
   
 <tr>
-  <td>check_input.c.c</td>
+  <td>check_input.c</td>
   <td>Implement built-ins</td>   
 </tr>
   
