@@ -26,6 +26,8 @@ int main(int ac, char **av, char **env)
 		if (arguments == NULL)
 		{
 			exit_value = 127;
+			if (isatty(0) == 0)
+				exit(exit_value);
 			continue;
 		}
 		child_pid = fork();
@@ -46,5 +48,5 @@ int main(int ac, char **av, char **env)
 		if (arguments)
 			free_array(arguments);
 	}
-	exit(exit_value);
+	return (exit_value);
 }
