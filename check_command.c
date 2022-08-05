@@ -30,7 +30,7 @@ char **check_command(char *buffer, char *av)
 				return (array_arg);
 			print_error(av, array_arg[0]);
 			free_array(array_arg);
-			return(NULL);
+			return (NULL);
 		}
 	}
 	free_array(array_arg);
