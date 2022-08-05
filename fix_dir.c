@@ -11,9 +11,8 @@ char *fix_dir(char **string, char *av)
 {
 	int i = 0, path_size = 0;
 	char **array_dir = NULL;
-	char *aux = NULL, *path = NULL, *argument_aux = NULL;
+	char *aux = NULL, *path = NULL;
 	struct stat st;
-	(void) argument_aux;
 
 	path = _getenv("PATH=");
 	if (path)
@@ -39,7 +38,10 @@ char *fix_dir(char **string, char *av)
 			if (stat(aux, &st) == 0)
 				free(string[0]); /* liberamos porque vamos a sustituir*/
 			else
+			{
+				free(aux);
 				return (string[0]);
+			}
 		}
 		return (aux);
 	}
