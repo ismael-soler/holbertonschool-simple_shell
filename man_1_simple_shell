@@ -1,0 +1,16 @@
+.TH hsh 1 "5 August 2022" "Simple Shell"
+.SH NAME
+hs - command interpreter
+.SH SYNOPSIS
+hsh
+.SH DESCRIPTION
+This project consist of the development of a command interpreter for Linux. The program tries to replicate the basic functionalities of sh shell. It was developed in C language.
+.SH OPTIONS
+.SS Overview
+The hsh utility shall execute commands read from a command line string, the standar input, or a specified file. It has a interactive and non-interactive mode, commands can be typed directly to the running shell or can be put into a file to be executed.
+.sp 1
+There are three types of command that can be interpreted by the shell: system calls, commands, or commands with to be found in a given specified route.
+If the command name doesn't match a built-in, and it's route is not specified, it will be searched through all PATH directories.
+.SH AUTHOR
+Ismael Soler & Ignacio Martino
+
