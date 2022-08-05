@@ -46,5 +46,5 @@ int main(int ac, char **av, char **env)
 		if (arguments)
 			free_array(arguments);
 	}
-	return (exit_value);
+	exit(exit_value);
 }

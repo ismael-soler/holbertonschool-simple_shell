@@ -20,5 +20,4 @@ int check_status(int pidC, int status)
 	else if (WIFSTOPPED(status))
 		return (WSTOPSIG(status));
 	return (0);
-
 }

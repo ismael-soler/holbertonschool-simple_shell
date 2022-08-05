@@ -2,17 +2,18 @@
 
 /**
  * fix_dir - complete the route
- * @argument: input
- * @av: argument value
+ * @string: input
+ * @av: value
  * Return: pointer to string
  */
 
-char *fix_dir(char *argument, char *av)
+char *fix_dir(char **string, char *av)
 {
 	int i = 0, path_size = 0;
 	char **array_dir = NULL;
 	char *aux = NULL, *path = NULL, *argument_aux = NULL;
 	struct stat st;
+	(void) argument_aux;
 
 	path = _getenv("PATH=");
 	if (path)
@@ -22,13 +23,13 @@ char *fix_dir(char *argument, char *av)
 		{
 			if (aux)
 				free(aux);
-			path_size = (strlen(array_dir[i]) + strlen(argument) + 2);
+			path_size = (strlen(array_dir[i]) + strlen(string[0]) + 2);
 			aux = malloc(sizeof(char) * path_size);
 			if (aux == NULL)
 				return (NULL);
 			strcpy(aux, array_dir[i]);
 			strcat(aux, "/");
-			strcat(aux, argument);
+			strcat(aux, string[0]);
 			if (stat(aux, &st) == 0)
 				break;
 		}
@@ -36,17 +37,14 @@ char *fix_dir(char *argument, char *av)
 		if (aux)
 		{
 			if (stat(aux, &st) == 0)
-			{
-				free(argument); /* liberamos porque vamos a sustituir*/
-				argument_aux = malloc(strlen(aux) * sizeof(char) + 1);
-				strcpy(argument_aux, aux);
-				free(aux);
-			}
+				free(string[0]); /* liberamos porque vamos a sustituir*/
 			else
-				return (argument);
+				return (string[0]);
 		}
-		return (argument_aux);
+		return (aux);
 	}
-	print_error(av, argument);
-	return (NULL);
+	print_error(av, string[0]);
+	free(string[0]);
+	string[0] = strdup("flag271103");
+	return (string[0]);
 }

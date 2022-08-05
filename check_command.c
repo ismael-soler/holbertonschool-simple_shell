@@ -23,16 +23,16 @@ char **check_command(char *buffer, char *av)
 			free_array(array_arg);
 			return (NULL);
 		}
-		array_arg[0] = fix_dir(array_arg[0], av); /*caso cuando no contiene un path*/
-		if (array_arg[0])
+		array_arg[0] = fix_dir(array_arg, av); /*cuando no contiene path*/
+		if (strcmp(array_arg[0], "flag271103") != 0)
 		{
 			if (stat(array_arg[0], &st) == 0)
 				return (array_arg);
 			print_error(av, array_arg[0]);
 			free_array(array_arg);
+			return(NULL);
 		}
-		return (NULL);
 	}
-	free(array_arg);
+	free_array(array_arg);
 	return (NULL);
 }
